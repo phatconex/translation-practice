@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="favicon.png" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Translation Practice</title>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Translation Practice</h1>
+            <div id="question">
+                <div id="loading" class="loading" style="display: none"></div>
+            </div>
+            <input type="text" id="answer" placeholder="Enter your translation" />
+            <button onclick="checkAnswer()">Check Answer</button>
+            <!-- <button onclick="showSummary()">Review Answers</button> -->
+            <div id="result"></div>
+        </div>
+        <!-- <div class="summary" id="summary" style="display: none">
+            <h2>Review Answers</h2>
+            <ul id="summaryList"></ul>
+            <button onclick="hideSummary()">Back</button>
+        </div> -->
+        <script src="index.js"></script>
+    </body>
+</html>
