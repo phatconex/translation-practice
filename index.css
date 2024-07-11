@@ -129,3 +129,8 @@ li {
         transform: rotate(360deg);
     }
 }
+@media (max-width: 991px) {
+    .container {
+        width: 90%;
+    }
+}
