@@ -1,0 +1,23 @@
+.list-topic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.topic {
+    width: calc(100% / 6);
+    display: block;
+    border: 2px solid #000000;
+    padding: 16px 12px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #000;
+    transition: 0.5s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+.topic:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

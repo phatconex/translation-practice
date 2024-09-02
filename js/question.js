@@ -1,39 +1,20 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbx3m_fC59WvPaBbctGXsuKvqMKtad7s82KpUp7XSIGUiVMBt5At2E3EAVCzUCn2zGFc/exec";
-
 let currentQuestionIndex = localStorage.getItem("currentQuestionIndex") ? parseInt(localStorage.getItem("currentQuestionIndex")) : 0;
 let userAnswers = [];
-const correctSound = new Audio("correct.mp3");
-const incorrectSound = new Audio("wrong.mp3");
+const correctSound = new Audio("sound/correct.mp3");
+const incorrectSound = new Audio("sound/wrong.mp3");
 
-function showLoading() {
-    const loadingElement = document.getElementById("loading");
-    loadingElement.style.display = "block";
-}
+const url = new URL(window.location.href);
+const topic = url.searchParams.get("topic");
 
-function hideLoading() {
-    const loadingElement = document.getElementById("loading");
-    loadingElement.style.display = "none";
-}
 async function fetchQuestions() {
-    showLoading();
-    try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-            throw new Error("Failed to fetch questions");
-        }
-        const data = await response.json();
-        questions = data;
-        displayQuestion();
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        alert("Failed to fetch questions. Please try again later.");
-    } finally {
-        hideLoading();
-    }
+    const data = await fetchAPI();
+    questions = data[topic].question;
+    console.log(questions);
+    displayQuestion();
 }
-function displayQuestion() {
+async function displayQuestion() {
     const questionElement = document.getElementById("question");
-    questionElement.innerHTML = `<span>${currentQuestionIndex}</span>` + questions[currentQuestionIndex].vietnamese;
+    questionElement.innerHTML = `<span>${currentQuestionIndex}</span>` + questions[currentQuestionIndex]["VI"];
 }
 
 function highlightErrors(userAnswer, correctAnswer) {
@@ -56,10 +37,10 @@ function checkAnswer() {
     const answerElement = document.getElementById("answer");
 
     const userAnswer = answerElement.value.trim();
-    const correctAnswer = questions[currentQuestionIndex].english;
+    const correctAnswer = questions[currentQuestionIndex]["EN"];
 
     userAnswers.push({
-        question: questions[currentQuestionIndex].vietnamese,
+        question: questions[currentQuestionIndex]["VI"],
         userAnswer: userAnswer,
         correctAnswer: correctAnswer,
         isCorrect: userAnswer.toLowerCase() === correctAnswer.toLowerCase(),

@@ -6,23 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Translation Practice</title>
         <link rel="stylesheet" href="css/base.css" />
-        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/question.css" />
     </head>
     <body>
         <div class="container">
             <div class="headline">
                 <img src="img/iconvocab.png" alt="" />
                 <div class="title">
-                    <h1>Choose the topic</h1>
-                    <p>Learn new vocabulary and pratice it</p>
+                    <h1>Pratice topic</h1>
+                    <p>Type your answer and enter to check the correct answer</p>
                 </div>
             </div>
             <div class="preloading" style="display: none">
                 <div id="loading" class="loading"></div>
             </div>
-            <div class="list-topic"></div>
+            <div id="question"></div>
+            <input type="text" id="answer" placeholder="Enter your translation" />
+            <button onclick="checkAnswer()">Check Answer</button>
+            <div id="result"></div>
         </div>
         <script src="js/base.js"></script>
-        <script src="js/index.js"></script>
+        <script src="js/question.js"></script>
     </body>
 </html>
