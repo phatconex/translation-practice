@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     background: #f6f8fa;
 }
 ul {
@@ -32,6 +32,7 @@ a {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 }
 
 input {
@@ -106,4 +107,21 @@ button:hover {
 }
 .headline h1 span {
     color: #ff8c00;
+}
+@media (max-width: 767px) {
+    .container {
+        width: 95%;
+    }
+}
+@media (max-width: 575px) {
+    .headline {
+        display: block;
+        text-align: center;
+    }
+    .headline img {
+        width: 50px;
+    }
+    .headline h1 {
+        font-size: 26px;
+    }
 }

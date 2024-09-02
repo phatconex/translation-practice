@@ -14,19 +14,19 @@ async function renderVocab() {
     });
 
     const listVocab = document.querySelector(".list-vocap");
-    listVocab.innerHTML = filteredData.map(
-        (item) => `<div class="flashcard" onclick="handleTurnCard(event)">
-    <div class="flashcard-inner">
-        <div class="flashcard-front">
-            <p>${item.vocabulary_en}</p>
-            <span>${item.phien_am}</span>
+    filteredData.forEach((item) => {
+        listVocab.innerHTML += `<div class="flashcard" onclick="handleTurnCard(event)">
+        <div class="flashcard-inner">
+            <div class="flashcard-front">
+                <p>${item.vocabulary_en}</p>
+                <span>${item.phien_am}</span>
+            </div>
+            <div class="flashcard-back">
+                <p>${item.vocabulary_vi}</p>
+            </div>
         </div>
-        <div class="flashcard-back">
-            <p>${item.vocabulary_vi}</p>
-        </div>
-    </div>
-</div>`
-    );
+    </div>`;
+    });
 
     //Render vocab
     console.log(filteredData);

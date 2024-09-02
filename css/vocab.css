@@ -1,10 +1,10 @@
 .list-vocap {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
 }
 .flashcard {
-    width: calc(100% / 8);
+    width: calc(100% / 8 - 15px);
     height: 150px;
     perspective: 1000px;
 }
@@ -23,7 +23,7 @@
 .flashcard-inner span {
     display: block;
     font-weight: 300;
-    font-size: 17px;
+    font-size: 14px;
     color: #9a9a9a;
 }
 .flashcard-inner p {
@@ -48,10 +48,21 @@
     font-size: 20px;
     /* color: #fff; */
     border-radius: 20px;
+    padding: 10px;
 }
 
 .flashcard-back {
     font-family: "Space Grotesk", sans-serif;
     background-color: #e7edff;
     transform: rotateY(180deg);
+}
+@media (max-width: 1200px) {
+    .flashcard {
+        width: calc(100% / 4 - 15px);
+    }
+}
+@media (max-width: 575px) {
+    .flashcard {
+        width: calc(100% / 2 - 15px);
+    }
 }
