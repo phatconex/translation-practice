@@ -1,4 +1,3 @@
-let currentQuestionIndex = localStorage.getItem("currentQuestionIndex") ? parseInt(localStorage.getItem("currentQuestionIndex")) : 0;
 let userAnswers = [];
 const correctSound = new Audio("sound/correct.mp3");
 const incorrectSound = new Audio("sound/wrong.mp3");
@@ -6,6 +5,7 @@ const incorrectSound = new Audio("sound/wrong.mp3");
 const url = new URL(window.location.href);
 const topic = url.searchParams.get("topic");
 
+let currentQuestionIndex = localStorage.getItem(topic) ? parseInt(localStorage.getItem(topic)) : 0;
 async function fetchQuestions() {
     const data = await fetchAPI();
     questions = data[topic].question;
@@ -50,7 +50,7 @@ function checkAnswer() {
         correctSound.play();
         resultElement.innerHTML = '<h3 style="color: green">Correct!</h3>';
         currentQuestionIndex++;
-        localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+        localStorage.setItem(topic, currentQuestionIndex);
 
         if (currentQuestionIndex < questions.length) {
             displayQuestion();

@@ -19,6 +19,12 @@
 .hidden {
     display: none;
 }
+.preloading {
+    position: relative;
+    width: unset;
+    height: unset;
+    background-color: transparent;
+}
 #question {
     font-size: 20px;
     background-color: #0d49fe14;
