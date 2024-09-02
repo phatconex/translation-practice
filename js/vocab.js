@@ -34,6 +34,13 @@ async function renderVocab() {
 renderVocab();
 function handleTurnCard(event) {
     event.currentTarget.classList.toggle("active");
+    const word = event.currentTarget.querySelector(".flashcard-front p").innerText;
+    speakWord(word);
+}
+function speakWord(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    window.speechSynthesis.speak(utterance);
 }
 document.querySelector("#btn-practice").addEventListener("click", function () {
     window.location.href = `question.html?topic=${topic}`;
