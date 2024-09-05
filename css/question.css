@@ -25,6 +25,9 @@
     height: unset;
     background-color: transparent;
 }
+.boxquestion img {
+    width: 200px;
+}
 #question {
     font-size: 20px;
     background-color: #0d49fe14;

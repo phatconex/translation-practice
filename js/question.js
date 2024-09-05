@@ -5,7 +5,7 @@ const incorrectSound = new Audio("sound/wrong.mp3");
 const url = new URL(window.location.href);
 const topic = url.searchParams.get("topic");
 
-let currentQuestionIndex = localStorage.getItem(topic) ? parseInt(localStorage.getItem(topic)) : 0;
+let currentQuestionIndex = JSON.parse(localStorage.getItem(topic)) ? JSON.parse(localStorage.getItem(topic)).question : 0;
 async function fetchQuestions() {
     const data = await fetchAPI();
     questions = data[topic].question;
@@ -50,7 +50,7 @@ function checkAnswer() {
         correctSound.play();
         resultElement.innerHTML = '<h3 style="color: green">Correct!</h3>';
         currentQuestionIndex++;
-        localStorage.setItem(topic, currentQuestionIndex);
+        localStorage.setItem(topic, JSON.stringify({ ...JSON.parse(localStorage.getItem(topic)), question: currentQuestionIndex }));
 
         if (currentQuestionIndex < questions.length) {
             displayQuestion();

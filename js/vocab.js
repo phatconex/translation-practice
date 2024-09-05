@@ -37,11 +37,10 @@ function handleTurnCard(event) {
     const word = event.currentTarget.querySelector(".flashcard-front p").innerText;
     speakWord(word);
 }
-function speakWord(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    window.speechSynthesis.speak(utterance);
-}
-document.querySelector("#btn-practice").addEventListener("click", function () {
+
+document.querySelector("#btn-practice-question").addEventListener("click", function () {
     window.location.href = `question.html?topic=${topic}`;
+});
+document.querySelector("#btn-practice-vocab").addEventListener("click", function () {
+    window.location.href = `vocabpratice.html?topic=${topic}`;
 });

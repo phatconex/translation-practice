@@ -4,7 +4,7 @@
     gap: 15px;
 }
 .flashcard {
-    width: calc(100% / 8 - 15px);
+    width: calc(100% / 6 - 15px);
     height: 150px;
     perspective: 1000px;
 }
