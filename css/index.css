@@ -60,3 +60,8 @@
         width: calc(100% / 2 - 20px);
     }
 }
+@media (max-width: 450px) {
+    .topic {
+        width: 100%;
+    }
+}
