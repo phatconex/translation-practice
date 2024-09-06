@@ -60,10 +60,21 @@ button {
     font-size: 20px;
     font-family: inherit;
     background: var(--primary-color);
+    border: 2px solid transparent;
+    transition: 0.5s;
 }
 
 button:hover {
     background-color: #ff8c00;
+}
+.btn-2 {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.btn-2:hover {
+    background-color: var(--primary-color);
+    color: #fff;
 }
 .preloading {
     background-color: #ffffff;

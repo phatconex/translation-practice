@@ -4,7 +4,7 @@ async function renderTopic() {
 
     const listTopic = document.querySelector(".list-topic");
     arrTopic.forEach((topic) => {
-        listTopic.innerHTML += `<a href="vocab.html?topic=${topic}" class="topic">${topic}</a>`;
+        listTopic.innerHTML += `<a href="vocab.html?topic=${topic}" class="topic"><span></span>${topic}<span></span></a>`;
     });
 }
 renderTopic();

@@ -1,25 +1,54 @@
 .list-topic {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 .topic {
-    width: calc(100% / 6);
+    width: calc(100% / 5 - 30px);
     display: block;
     border: 2px solid #000000;
     padding: 16px 12px;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
+    margin-top: 11px;
     text-align: center;
     color: #000;
     transition: 0.5s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: 0.5s;
+    position: relative;
+}
+.topic span {
+    position: absolute;
+    width: 30px;
+    height: 25px;
+    top: -25px;
+    left: 6%;
+    border-radius: 50px 50px 0 0;
+    background-color: var(--primary-color);
+}
+.topic span:last-child {
+    left: 77%;
+}
+.topic span::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    background-color: #fff;
+    transition: 0.5s;
 }
 .topic:hover {
     transform: translateY(-5px);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.topic:hover span::before {
+    height: 5px;
 }
 @media (max-width: 767px) {
     .topic {

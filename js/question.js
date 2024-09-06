@@ -5,11 +5,12 @@ const incorrectSound = new Audio("sound/wrong.mp3");
 const url = new URL(window.location.href);
 const topic = url.searchParams.get("topic");
 
-let currentQuestionIndex = JSON.parse(localStorage.getItem(topic)) ? JSON.parse(localStorage.getItem(topic)).question : 0;
+const getLocalStorage = JSON.parse(localStorage.getItem(topic));
+let currentQuestionIndex = getLocalStorage && getLocalStorage.vocab ? getLocalStorage.question : 0;
+
 async function fetchQuestions() {
     const data = await fetchAPI();
     questions = data[topic].question;
-    console.log(questions);
     displayQuestion();
 }
 async function displayQuestion() {

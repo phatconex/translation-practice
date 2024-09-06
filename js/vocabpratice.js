@@ -1,6 +1,11 @@
 const url = new URL(window.location.href);
 const topic = url.searchParams.get("topic");
-let currentIndex = JSON.parse(localStorage.getItem(topic)) ? JSON.parse(localStorage.getItem(topic)).vocab : 0;
+const getLocalStorage = JSON.parse(localStorage.getItem(topic));
+let currentIndex = getLocalStorage && getLocalStorage.vocab ? getLocalStorage.vocab : 0;
+
+console.log(currentIndex);
+// console.log(JSON.parse(localStorage.getItem(topic)).vocab);
+
 let vocabulary = [];
 const correctSound = new Audio("sound/correct.mp3");
 const incorrectSound = new Audio("sound/wrong.mp3");
@@ -20,9 +25,8 @@ async function renderVocab() {
 }
 
 async function showWord() {
-    console.log(vocabulary.length);
     if (currentIndex < vocabulary.length) {
-        document.getElementById("question").innerText = vocabulary[currentIndex].vocabulary_vi;
+        document.getElementById("question").innerHTML = `<span>${currentIndex + 1}</span>` + vocabulary[currentIndex].vocabulary_vi;
         document.getElementById("answer").value = "";
     } else {
         document.querySelector(".boxquestion").innerHTML = `<img src="img/congrats.jpg" alt="">`;
@@ -35,10 +39,11 @@ function checkAnswer() {
     const correctAnswer = vocabulary[currentIndex].vocabulary_en.toLowerCase();
 
     if (userAnswer === correctAnswer) {
-        document.getElementById("result").innerText = "CORRECT!";
+        document.getElementById("result").innerHTML = '<span style="color:green">CORRECT</span>';
         currentIndex++;
         correctSound.play();
         localStorage.setItem(topic, JSON.stringify({ ...JSON.parse(localStorage.getItem(topic)), vocab: currentIndex }));
+        document.getElementById("answer").value = "";
         if (currentIndex < vocabulary.length) {
             showWord();
         } else {
@@ -46,7 +51,7 @@ function checkAnswer() {
             document.querySelector(".boxquestion").innerHTML = `<img src="img/congrats.jpg" alt="">`;
         }
     } else {
-        document.getElementById("result").innerText = "WRONG, TRY AGAIN!";
+        document.getElementById("result").innerHTML = '<span style="color:red">WRONG, TRY AGAIN!</span>';
         incorrectSound.play();
     }
 }
@@ -58,3 +63,7 @@ document.getElementById("answer").addEventListener("keydown", function (event) {
         checkAnswer();
     }
 });
+function resetAnswer() {
+    localStorage.setItem(topic, JSON.stringify({ ...JSON.parse(localStorage.getItem(topic)), vocab: 0 }));
+    window.location.reload();
+}
