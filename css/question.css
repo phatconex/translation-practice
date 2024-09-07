@@ -29,6 +29,8 @@
     width: 200px;
 }
 #question {
+    display: flex;
+    align-items: center;
     font-size: 20px;
     background-color: #0d49fe14;
     color: #032589;
@@ -46,6 +48,10 @@
     margin-right: 5px;
     border-radius: 5px;
     color: #fff;
+}
+#question i {
+    margin-left: auto;
+    cursor: pointer;
 }
 #result {
     margin-top: 20px;

@@ -3,12 +3,10 @@ const topic = url.searchParams.get("topic");
 const getLocalStorage = JSON.parse(localStorage.getItem(topic));
 let currentIndex = getLocalStorage && getLocalStorage.vocab ? getLocalStorage.vocab : 0;
 
-console.log(currentIndex);
-// console.log(JSON.parse(localStorage.getItem(topic)).vocab);
-
 let vocabulary = [];
 const correctSound = new Audio("sound/correct.mp3");
 const incorrectSound = new Audio("sound/wrong.mp3");
+
 async function renderVocab() {
     const data = await fetchAPI();
 
@@ -20,13 +18,15 @@ async function renderVocab() {
         uniqueValues.add(item.vocabulary_en);
         return true;
     });
-    console.log(vocabulary);
     showWord();
 }
 
 async function showWord() {
     if (currentIndex < vocabulary.length) {
-        document.getElementById("question").innerHTML = `<span>${currentIndex + 1}</span>` + vocabulary[currentIndex].vocabulary_vi;
+        document.getElementById("question").innerHTML =
+            `<span>${currentIndex + 1}</span>` +
+            vocabulary[currentIndex].vocabulary_vi +
+            `<i onclick="hintVocab('${vocabulary[currentIndex].vocabulary_en}')" class="fa-solid fa-lightbulb"></i>`;
         document.getElementById("answer").value = "";
     } else {
         document.querySelector(".boxquestion").innerHTML = `<img src="img/congrats.jpg" alt="">`;
@@ -66,4 +66,7 @@ document.getElementById("answer").addEventListener("keydown", function (event) {
 function resetAnswer() {
     localStorage.setItem(topic, JSON.stringify({ ...JSON.parse(localStorage.getItem(topic)), vocab: 0 }));
     window.location.reload();
+}
+function hintVocab(word) {
+    speakWord(word);
 }
