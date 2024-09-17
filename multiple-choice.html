@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="favicon.png" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Translation Practice</title>
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/multiple-choice.css" />
+    </head>
+    <body>
+        <div class="quiz-container">
+            <h1>Vocabulary Quiz</h1>
+            <div class="preloading" style="display: none">
+                <div class="typewriter">
+                    <div class="slide"><i></i></div>
+                    <div class="paper"></div>
+                    <div class="keyboard"></div>
+                </div>
+            </div>
+            <div id="question-container">
+                <p id="question"></p>
+                <div id="options">
+                    <div class="option-btn" data-id="0"></div>
+                    <div class="option-btn" data-id="1"></div>
+                    <div class="option-btn" data-id="2"></div>
+                    <div class="option-btn" data-id="3"></div>
+                </div>
+            </div>
+            <div id="result-container">
+                <h2>Results</h2>
+                <p id="score"></p>
+                <ul id="correct-list">
+                    <h3>Correct Answers:</h3>
+                </ul>
+                <ul id="incorrect-list">
+                    <h3>Incorrect Answers:</h3>
+                </ul>
+            </div>
+        </div>
+        <script src="js/base.js"></script>
+        <script src="js/multiple-choice.js"></script>
+    </body>
+</html>

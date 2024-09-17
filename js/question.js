@@ -6,7 +6,8 @@ const url = new URL(window.location.href);
 const topic = url.searchParams.get("topic");
 
 const getLocalStorage = JSON.parse(localStorage.getItem(topic));
-let currentQuestionIndex = getLocalStorage && getLocalStorage.vocab ? getLocalStorage.question : 0;
+let currentQuestionIndex = getLocalStorage && getLocalStorage.question ? getLocalStorage.question : 0;
+console.log(getLocalStorage);
 
 async function fetchQuestions() {
     const data = await fetchAPI();

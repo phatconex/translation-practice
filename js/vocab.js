@@ -44,3 +44,6 @@ document.querySelector("#btn-practice-question").addEventListener("click", funct
 document.querySelector("#btn-practice-vocab").addEventListener("click", function () {
     window.location.href = `vocabpratice.html?topic=${topic}`;
 });
+document.querySelector("#btn-multiple-choice").addEventListener("click", function () {
+    window.location.href = `multiple-choice.html?topic=${topic}`;
+});
