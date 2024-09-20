@@ -73,7 +73,7 @@ function showQuestion() {
     resetButtonStyles();
     if (currentQuestionIndex < vocabulary.length) {
         const currentQuestion = vocabulary[currentQuestionIndex];
-        questionElement.textContent = `What is the English word for "${currentQuestion.vocabulary_vi}"?`;
+        questionElement.innerHTML = `What is the English word for <span>"${currentQuestion.vocabulary_vi}"</span>?`;
 
         const options = generateOptions(currentQuestion.vocabulary_en);
         optionButtons.forEach((button, index) => {
